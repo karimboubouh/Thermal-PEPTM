@@ -1,7 +1,7 @@
-# An Efficient and Accurate Personalized Peer-to-Peer Machine Learning Approach for Home Thermal Modeling
+# *PePTM*: An Efficient and Accurate Personalized P2P Learning Algorithm for Home Thermal Modeling
 
-This repository contains the code to run simulations for the "*An Efficient and Accurate Personalized Peer-to-Peer Machine Learning Approach for Home Thermal Modeling*" paper, submitted in *ACM e-Energy 2023* conference.
-The repository includes the implementation of the temporal and spacial abstraction suggested in the paper as well as the Thermal P3 algorithm on a simulated environment. The `\mobile` folder contains the implementation of the P3 algorithm on Android devices.
+This repository contains the code to run simulations for the "*PePTM*: An Efficient and Accurate Personalized P2P Learning Algorithm for Home Thermal Modeling" paper, submitted to the MDPI energies journal.
+The repository includes the implementation of the temporal and spacial abstraction suggested in the paper as well as the Thermal *PePTM* algorithm on a simulated environment. The `\mobile` folder contains the implementation of the *PePTM* algorithm on Android devices.
 
 ### Requirements
 
@@ -17,18 +17,18 @@ We use the Ecobee dataset available in [https://bbd.labworks.org/ds/bbd/ecobee](
 
 ### ML Engine
 
-We have implemented the P3 algorithm using two ML engines. First, using `Tensorflow` for running on the Linux server (used for performance evaluations). Second, using `Numpy` only (`N3`) to support ML training on android devices.
+We have implemented the PePTM algorithm using two ML engines. First, using `Tensorflow` for running on the Linux server (used for performance evaluations). Second, using `Numpy` only (`N3`) to support ML training on android devices.
 To configure the ML Engine, update the following line in `src/conf.py` 
 ``
 ML_ENGINE = "Tensorflow"  # "N3" or "Tensorflow"
 ``
 **NB:** Android implementation does not support Tensorflow.
 
-## Evaluation of P3 
+## Evaluation of PePTM 
 
 ### Configuration
 
-- To select a given cluster for training our of the 6 clusters generated during the preprocessing phase (), set the id of the cluster in one for the main files (`mainP3.py`, `mainFL.py`, `mainCL.py`) as follows:
+- To select a given cluster for training our of the 6 clusters generated during the preprocessing phase (), set the id of the cluster in one for the main files (`mainPePTM.py`, `mainFL.py`, `mainCL.py`) as follows:
 
   ```
   cluster_id = 0
@@ -46,7 +46,7 @@ ML_ENGINE = "Tensorflow"  # "N3" or "Tensorflow"
   - `rho=0.05`: to have around 10% neighbor for each peer.
   - `rho=0.3`: to have around 30% neighbor for each peer.
 
-  To set a value for `rho` in ``mainP3.py`` use:
+  To set a value for `rho` in ``mainPePTM.py`` use:
 
   ```
   cluster_id = None
@@ -70,7 +70,7 @@ The main algorithm parameters are the following:
 | --model      | ML model (default: LSTM) LSTM or RNN                         |
 | --dataset    | Dataset (default: Ecobee)                                    |
 
-### Execution of Personalized P2P (P3)
+### Execution of Personalized P2P (PePTM)
 
 To reproduce the experiments of model performance in the paper use the following command:
 
@@ -82,9 +82,9 @@ To reproduce the experiments of model performance in the paper use the following
 
 `python mainFL.py`
 
-- To run P2P Learning (P3 algorithm)
+- To run P2P Learning (PePTM algorithm)
 
-`python mainP3.py`
+`python mainPePTM.py`
 
 You can configure every file using the `args` variable.
 
@@ -94,7 +94,7 @@ topology = random_graph(models, rho=0.95)  # 0, 0.4, 0.7, 0.95, 0.99
 
 ## Energy Analysis
 
-To perform energy analysis of P3 on the Linux server (Ubuntu 20.04), we developed two methods of energy readings:
+To perform energy analysis of PePTM on the Linux server (Ubuntu 20.04), we developed two methods of energy readings:
 
 - Evaluating the whole program by running the `run.sh` script.
 - Evaluating a given method of the algorithm using python decorators.
@@ -109,7 +109,7 @@ We have used the following packages: `powerstat`, `cset-shield`, `cpupower`.
 
 To measure the energy consumption of the whole program run the following:
 
-`./run.sh -c 0 -p avg -r 1 -d 2 -e "python mainP3.py"`
+`./run.sh -c 0 -p avg -r 1 -d 2 -e "python mainPePTM.py"`
 
 Run `./run.sh -h` to get a list of the available options and what are used for.
 
